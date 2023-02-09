@@ -5,6 +5,7 @@ __pycache__/
 
 # Mac stuff
 .DS_store
+keys
 
 # C extensions
 *.so
