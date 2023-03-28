@@ -12,10 +12,10 @@ from odc.stac import stac_load
 import pandas as pd
 
 crop_data = pd.read_csv('./data/crop_data.csv')
-#crop_data = pd.read_csv('./data/validation_data.csv')
+# crop_data = pd.read_csv('./data/validation_data.csv')
 
 # Define the bbox size
-box_size_deg = 0.005 # Surrounding box in degrees
+box_size_deg = 0.0004 # Surrounding box in degrees
 
 # Define the time window
 #time_window="2020-04-01/2020-06-30"
@@ -56,11 +56,11 @@ def get_ndvi():
 			bbox=bounds
 		)
 
-		# Not filtering water
 		cloud_mask = \
 			(xx.SCL != 0) & \
 			(xx.SCL != 1) & \
 			(xx.SCL != 3) & \
+			(xx.SCL != 6) & \
 			(xx.SCL != 8) & \
 			(xx.SCL != 9) & \
 			(xx.SCL != 10)
@@ -79,3 +79,4 @@ ndvi_list = get_ndvi()
 ndvi_list = pd.DataFrame(ndvi_list, columns=['Latitude and Longitude', 'ndvi_mean', 'ndvi_max', 'ndvi_min'])
 
 ndvi_list.to_csv('./data/ndvi.csv', index=False)
+# ndvi_list.to_csv('./data/ndvi_val.csv', index=False)
