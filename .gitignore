@@ -2,10 +2,11 @@
 __pycache__/
 *.py[cod]
 *$py.class
+keys/
+~$*
 
-# Mac stuff
+# MacOS stuff
 .DS_store
-keys
 
 # C extensions
 *.so
